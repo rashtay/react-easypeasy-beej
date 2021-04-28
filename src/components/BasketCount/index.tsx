@@ -2,10 +2,10 @@ import React from 'react';
 
 type Props = {
   count: number;
-  onLinkPress: () => any;
+  onLinkPress: () => void;
 };
 
-export default function BasketCount({ count, onLinkPress }: Props) {
+const BasketCount: React.FC<Props> = ({ count, onLinkPress }) => {
   return (
     <div>
       <button type="button" onClick={onLinkPress}>
@@ -13,4 +13,6 @@ export default function BasketCount({ count, onLinkPress }: Props) {
       </button>
     </div>
   );
-}
+};
+
+export default BasketCount;

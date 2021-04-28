@@ -15,7 +15,7 @@ import { StoreProvider } from 'easy-peasy';
 import AppNavigation from 'routes';
 import store from './store';
 
-const App = () => {
+const App: React.FC<unknown> = () => {
   return (
     <StoreProvider store={store}>
       <AppNavigation />

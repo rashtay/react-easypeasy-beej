@@ -1,12 +1,16 @@
 import React from 'react';
 
 interface Props {
-  product: Product;
-  onAdd: () => any;
+  product: Product | undefined;
+  onAdd: () => void;
   loading: boolean;
 }
 
-export default function Product({ product, onAdd, loading }: Props) {
+const Product: React.FC<Props> = ({ product, onAdd, loading }) => {
+  if (!product) {
+    return null;
+  }
+
   return (
     <div>
       <span>{product.name}</span>
@@ -17,4 +21,6 @@ export default function Product({ product, onAdd, loading }: Props) {
       </button>
     </div>
   );
-}
+};
+
+export default Product;

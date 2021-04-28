@@ -4,10 +4,12 @@ interface Props {
   logs: string[];
 }
 
-export default function AuditLog({ logs }: Props) {
+const AuditLog: React.FC<Props> = ({ logs }) => {
   return (
     <div>
       <span>{logs.join('\n')}</span>
     </div>
   );
-}
+};
+
+export default AuditLog;

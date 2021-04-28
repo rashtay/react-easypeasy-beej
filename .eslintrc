@@ -2,18 +2,24 @@
   "root": true,
   "extends": [
     "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
     "prettier",
-    "prettier/@typescript-eslint",
-    "prettier/react"
+    "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "jest"],
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
       "jsx": true
     },
     "project": "./tsconfig.json"
+  },
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
   },
   "env": {
     "browser": true,
@@ -41,7 +47,6 @@
     "no-console": [1, { "allow": ["warn", "info", "error"] }],
     "no-multiple-empty-lines": [2, { "max": 1, "maxEOF": 0, "maxBOF": 0 }],
 
-    "no-use-before-define": [2, { "functions": false }],
     "prefer-const": 2,
 
     "no-param-reassign": [
@@ -55,7 +60,10 @@
     "quotes": ["error", "single", "avoid-escape"],
     "import/prefer-default-export": 0,
     "import/no-extraneous-dependencies": 0,
-    "global-require": 0
+    "global-require": 0,
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "react/prop-types": 0
   },
   "settings": {
     "import/resolver": {

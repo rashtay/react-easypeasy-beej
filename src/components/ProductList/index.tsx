@@ -2,16 +2,16 @@ import React from 'react';
 
 interface Props {
   products: Product[];
-  onProductPress: (product: Product) => any;
+  onProductPress: (product: Product) => void;
 }
 
-export default function ProductList({ products, onProductPress }: Props) {
+const ProductList: React.FC<Props> = ({ products, onProductPress }) => {
   return (
     <div>
       <h1>Our products</h1>
 
       <ul>
-        {products.map((product: any) => (
+        {products.map((product) => (
           <li key={product.id}>
             <button type="button" onClick={() => onProductPress(product)}>
               {product.name}
@@ -21,4 +21,6 @@ export default function ProductList({ products, onProductPress }: Props) {
       </ul>
     </div>
   );
-}
+};
+
+export default ProductList;

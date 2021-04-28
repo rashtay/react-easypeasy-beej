@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { useStoreState } from 'easy-peasy';
+import { useStoreState } from 'hooks/types';
 import ProductList from 'components/ProductList';
 import http from 'services/api';
 
-export default function ProductListContainer() {
+const ProductListContainer: React.FC<unknown> = () => {
   const products = useStoreState((state) => state.products.items);
 
   useEffect(() => {
@@ -20,4 +20,6 @@ export default function ProductListContainer() {
   }, []);
 
   return <ProductList products={products} onProductPress={() => {}} />;
-}
+};
+
+export default ProductListContainer;

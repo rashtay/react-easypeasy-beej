@@ -1,27 +1,34 @@
 import React from 'react';
 
 interface Props {
-  products: Product[];
-  onProductPress: (product: Product) => any;
-  onRemoveProduct: (idx: number) => any;
+  products: (Product | undefined)[];
+  onProductPress: (product: Product) => void;
+  onRemoveProduct: (idx: number) => void;
 }
 
-export default function Basket({
+const Basket: React.FC<Props> = ({
   products,
   onProductPress,
   onRemoveProduct,
-}: Props) {
+}) => {
+  if (!products || (products && !products.length)) {
+    return <p>No products</p>;
+  }
+
   return (
     <div>
       <h1>The merchandise</h1>
       <ul>
-        {products.map((product: any, idx: number) => {
+        {products.map((product, idx: number) => {
           const key = idx + 1;
 
           return (
             <li key={key}>
-              <button type="button" onClick={() => onProductPress(product)}>
-                {product.name}
+              <button
+                type="button"
+                onClick={() => onProductPress(product as Product)}
+              >
+                {product?.name}
               </button>
 
               <button type="button" onClick={() => onRemoveProduct(idx)}>
@@ -33,4 +40,6 @@ export default function Basket({
       </ul>
     </div>
   );
-}
+};
+
+export default Basket;

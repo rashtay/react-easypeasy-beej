@@ -1,9 +1,11 @@
 import React from 'react';
-import { useStoreState } from 'easy-peasy';
 import BasketCount from 'components/BasketCount';
+import { useStoreState } from '../../hooks/types';
 
-export default function BasketCountContainer() {
+const BasketCountContainer: React.FC<unknown> = () => {
   const count = useStoreState((state) => state.basket.count);
 
   return <BasketCount count={count} onLinkPress={() => {}} />;
-}
+};
+
+export default BasketCountContainer;

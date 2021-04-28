@@ -1,16 +1,14 @@
 import React, { useCallback, useState } from 'react';
-import { useStoreState, useStoreActions } from 'easy-peasy';
+import { useStoreState, useStoreActions } from 'hooks/types';
 import Product from 'components/Product';
 
-export default function ProductContainer() {
+const ProductContainer: React.FC<unknown> = () => {
   // const { id } = route.params;
-  const chosenProduct: any = useStoreState((state) =>
-    state.products.getById('1'),
-  );
+  const chosenProduct = useStoreState((state) => state.products.getById(1));
 
   //  map our action 👇
   const addProductToBasket = useStoreActions(
-    (actions: any) => actions.basket.addProduct,
+    (actions) => actions.basket.addProduct,
   );
 
   // state to track when we are saving to basket
@@ -18,10 +16,12 @@ export default function ProductContainer() {
 
   // callback to handle click, saving to basket
   const onAddToBasketClick = useCallback(async () => {
-    setAdding(true);
-    await addProductToBasket(chosenProduct.id);
+    if (chosenProduct && chosenProduct.id) {
+      setAdding(true);
+      await addProductToBasket(chosenProduct.id);
 
-    setAdding(false);
+      setAdding(false);
+    }
   }, [chosenProduct, addProductToBasket]);
 
   return (
@@ -31,4 +31,6 @@ export default function ProductContainer() {
       loading={adding}
     />
   );
-}
+};
+
+export default ProductContainer;

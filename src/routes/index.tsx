@@ -6,7 +6,7 @@ import { Language } from 'types/languages';
 
 const AsyncImport = (path: string) => lazy(() => import(`containers/${path}`));
 
-const AppNavigation = () => {
+const AppNavigation: React.FC<unknown> = () => {
   const [isReady, setIsReady] = React.useState<boolean>(false);
 
   const languages = useStoreState((state) => state.languages.items);
@@ -42,7 +42,7 @@ const AppNavigation = () => {
     }
 
     setIsReady(true);
-  }, []);
+  }, [currentLanguage, languages, onSelectLanguage]);
 
   useEffect(() => {
     if (!isReady) {

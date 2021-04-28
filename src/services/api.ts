@@ -36,10 +36,7 @@ const methods: HTTPVerb = ['get', 'post', 'put', 'patch', 'delete'];
  *
  * @returns ParsedEndpoint: string
  */
-const parseEndpoint = (
-  endpoint: string,
-  customBaseUrl: string = '',
-): string => {
+const parseEndpoint = (endpoint: string, customBaseUrl = ''): string => {
   const tailoredBaseURL = customBaseUrl || BASE_URL;
 
   return tailoredBaseURL ? `${tailoredBaseURL}${endpoint}` : '';
@@ -89,7 +86,7 @@ const api = async (endpoint: string, options: APIOptions) => {
 
 const attachVerbs = (
   httpMethods: HTTPVerb,
-  constructApi: (endpoint: string, options: APIOptions) => any,
+  constructApi: (endpoint: string, options: APIOptions) => void,
 ) => {
   const httpMethodConstruct: DynamicObject = {};
 

@@ -36,7 +36,7 @@ const encodeSet = (tuple: [string, Array<string>]): Array<string> =>
  *
  * @returns {string} Formatted query params string, with ? prepended.
  */
-export const format = (params: { [key: string]: any }): string => {
+export const format = (params: { [key: string]: string }): string => {
   if (!params) {
     return '';
   }
@@ -49,7 +49,7 @@ export const format = (params: { [key: string]: any }): string => {
 
   const query = keys
     .map((key) => {
-      const value = Array.isArray(params[key]) ? params[key] : [params[key]];
+      const value = [params[key]];
 
       return encodeSet([key, value]);
     })

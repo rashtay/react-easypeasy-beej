@@ -11,6 +11,6 @@ export const productsModel: ProductsModel = {
   ],
   getById: computed((state) =>
     // 👇 return a function that accepts an "id" argument
-    (id: number) => state.items.find((product: any) => product.id === id),
+    (id: number) => state.items.find((product) => product.id === id),
   ),
 };

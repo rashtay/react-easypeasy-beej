@@ -1,13 +1,13 @@
 import React from 'react';
-import { useStoreActions, useStoreState } from 'easy-peasy';
 import Basket from 'components/Basket';
+import { useStoreActions, useStoreState } from '../../hooks/types';
 
-export default function BasketContainer() {
+const BasketContainer: React.FC<unknown> = () => {
   const basketProducts = useStoreState((state) => state.basket.products);
 
   //  map our action 👇
   const removeProductFromBasket = useStoreActions(
-    (actions: any) => actions.basket.removeProduct,
+    (actions) => actions.basket.removeProduct,
   );
 
   return (
@@ -17,4 +17,6 @@ export default function BasketContainer() {
       onRemoveProduct={(idx) => removeProductFromBasket(idx)}
     />
   );
-}
+};
+
+export default BasketContainer;

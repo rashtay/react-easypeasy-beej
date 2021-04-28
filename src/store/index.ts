@@ -11,7 +11,7 @@ import { IS_DEV } from 'utils/config';
 
 const store = createStore(
   persist(storeModel, {
-    whitelist: ['languages'],
+    allow: ['languages'],
     storage: 'localStorage',
   }),
   {
